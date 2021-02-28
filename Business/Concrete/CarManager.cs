@@ -18,12 +18,36 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
+        public bool Add(Car car)
+        {
+            if (car.Description.Length > 2 && car.DailyPrice > 0)
+            {
+                _carDal.Add(car);
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Hatalı giriş tekrar deneyin.");
+                return false;
+            }
+        }
+
         public List<Car> GetAll()
         {
                 //İş kodları.
                 //Yetki kontrolü.
                 //Geçer ise return e ulaşır ve ürünlere de ulaşmış olur.
             return _carDal.GetAll();
+        }
+
+        public List<Car> GetCarsByBrandId(int Id)
+        {
+            return _carDal.GetAll(p => p.BrandId == Id);
+        }
+
+        public List<Car> GetCarsByColorId(int Id)
+        {
+            return _carDal.GetAll(p => p.ColorId == Id);
         }
     }
 }
