@@ -7,10 +7,13 @@ namespace Business.Abstract
 {
     public interface ICarService
     {
+        List<Car> GetById(int CarId);
         List<Car> GetAll();
         List<Car> GetCarsByBrandId(int Id);
         List<Car> GetCarsByColorId(int Id);
 
-        bool Add(Car car);
+        void Add(Car car);
+        void Delete(Car car);
+        void Update(Car car);
     }
 }
