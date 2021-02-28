@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using Entities.Abstract;
 using Microsoft.EntityFrameworkCore;
@@ -42,9 +44,14 @@ namespace Core.DataAccess.IEntityFramework
 
             public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
             {
-                return filter == null
-                    ? context.Set<TEntity>().ToList()
-                    : context.Set<TEntity>.Where(filter).ToList();
+
+                using (TContext context = new TContext())
+                {
+                    return filter == null
+                ? context.Set<TEntity>().ToList()
+                : context.Set<TEntity>().Where(filter).ToList();
+                }
+               
             }
 
             public void Update(TEntity entity)
