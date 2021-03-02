@@ -9,9 +9,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-
-            
+            //Uygulama veri tabanına bağlı değil.O yüzden bu kısım çalışmayacağından dolayı boş bıraktım.
             
         }
     }

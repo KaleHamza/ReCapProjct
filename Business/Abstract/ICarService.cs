@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Utilities.Results;
 using Entities.Concrete;
 
 namespace Business.Abstract
 {
     public interface ICarService
     {
-        List<Car> GetById(int CarId);
-        List<Car> GetAll();
-        List<Car> GetCarsByBrandId(int Id);
-        List<Car> GetCarsByColorId(int Id);
-        List<CarDetailDto> GetCarDetails();
+        IDataResult<List<Car>> GetById(int CarId);
+        IDataResult<List<Car>> GetAll();
+        IDataResult<List<Car>> GetCarsByBrandId(int Id);
+        IDataResult<List<Car>> GetCarsByColorId(int Id);
+        IDataResult<List<CarDetailDto>> GetCarDetails();
 
-        void Add(Car car);
-        void Delete(Car car);
-        void Update(Car car);
+        IResult Add(Car car);
+        IResult Delete(Car car);
+        IResult Update(Car car);
     }
 }
