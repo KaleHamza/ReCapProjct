@@ -8,12 +8,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core.DataAccess.IEntityFramework
 {
-    public class EfEntityRepositoryBase
-    {
-        public class EfEntityRepository<TEntity,TContext>:IEntityRepository<TEntity>
-            where TEntity:class,IEntity,new()
+    public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+            
+            where TEntity : class, IEntity, new()
             where TContext : DbContext, new()
-        {
+    {
+            
+        
             public void Add(TEntity entity)
             {
                 using (TContext context = new TContext())
@@ -66,4 +67,4 @@ namespace Core.DataAccess.IEntityFramework
 
         }
     }
-}
+
