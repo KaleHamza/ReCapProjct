@@ -9,7 +9,7 @@ using Entities.Concrete;
 
 namespace Business.Concrete
 {
-    class UserManager:IUserService
+    public class UserManager:IUserService
     {
         IUserDal _userDal;
 
